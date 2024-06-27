@@ -24,14 +24,12 @@ export function Footer() {
                   height="32"
                   className="w-8"
                 />
-                <span>Nextly</span>
+                <span>Close Coding</span>
               </Link>
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              Nextly is a free landing page & marketing website template for
-              startups and indie projects. Its built with Next.js & TailwindCSS.
-              And its completely open-source.
+            Close Coding provides top-notch digital solutions for businesses of all sizes. Our offerings include custom websites, automation, bespoke software, and mobile apps. Built with the latest technologies, our solutions ensure efficiency and modernity. We're committed to delivering exceptional quality, and our services are tailored to meet your unique needs.
             </div>
 
             <div className="mt-5">

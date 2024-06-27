@@ -15,7 +15,7 @@ export const Hero = () => {
               At Close Coding, we specialize in transforming your
               ideas into digital reality. Whether you need a stunning website,
               powerful automation, bespoke software, or a cutting-edge mobile app,
-               our expert team is here to deliver custom solutions that perfectly fit your needs.
+              our expert team is here to deliver custom solutions that perfectly fit your needs.
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
@@ -53,7 +53,7 @@ export const Hero = () => {
               src={heroImg}
               width="616"
               height="617"
-              className={"object-cover"}
+              className={"object-cover rounded-xl"}
               alt="Hero Illustration"
               loading="eager"
               placeholder="blur"

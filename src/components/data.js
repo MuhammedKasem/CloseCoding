@@ -11,46 +11,46 @@ import benefitOneImg from "../../public/img/benefit-one.png";
 import benefitTwoImg from "../../public/img/benefit-two.png";
 
 const benefitOne = {
-  title: "Highlight your benefits",
-  desc: "You can use this space to highlight your first benefit or a feature of your product. It can also contain an image or Illustration like in the example along with some bullet points.",
+  title: "Custom Solutions Tailored for You",
+  desc: "At Close Coding, we pride ourselves on delivering bespoke solutions that perfectly match your unique business needs. Our custom approach ensures you get the most effective and personalized product.",
   image: benefitOneImg,
   bullets: [
     {
-      title: "Understand your customers",
-      desc: "Then explain the first point breifly in one or two lines.",
+      title: "Unique Solutions",
+      desc: "Get tailored solutions that fit your specific requirements.",
       icon: <FaceSmileIcon />,
     },
     {
-      title: "Improve acquisition",
-      desc: "Here you can add the next benefit point.",
+      title: "Innovative Approach",
+      desc: "Benefit from cutting-edge technologies and creative problem-solving.",
       icon: <ChartBarSquareIcon />,
     },
     {
-      title: "Drive customer retention",
-      desc: "This will be your last bullet point in this section.",
+      title: "Dedicated Support",
+      desc: "Receive ongoing support and maintenance for optimal performance.",
       icon: <CursorArrowRaysIcon />,
     },
   ],
 };
 
 const benefitTwo = {
-  title: "Offer more benefits here",
-  desc: "You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.",
+  title: "Seamless Integration",
+  desc: "Our solutions are designed to integrate seamlessly with your existing systems and processes, ensuring smooth and efficient operation.",
   image: benefitTwoImg,
   bullets: [
     {
       title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
+      desc: "Close Coding ensures that all our solutions are mobile-first and fully responsive, providing a consistent experience across all devices.",
       icon: <DevicePhoneMobileIcon />,
     },
     {
-      title: "Powered by Next.js & TailwindCSS",
-      desc: "This template is powered by latest technologies and tools.",
+      title: "Powered by Cutting-Edge Technologies",
+      desc: "We leverage the latest technologies to deliver fast, efficient, and state-of-the-art solutions tailored to your business needs.",
       icon: <AdjustmentsHorizontalIcon />,
     },
     {
       title: "Dark & Light Mode",
-      desc: "Nextly comes with a zero-config light & dark mode. ",
+      desc: "Our solutions include built-in, zero-config dark and light modes, offering users the flexibility to choose their preferred viewing experience.",
       icon: <SunIcon />,
     },
   ],

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Container } from "@/components/Container";
-import heroImg from "../../public/img/hero.png";
 
 export const Hero = () => {
   return (
@@ -48,7 +47,7 @@ export const Hero = () => {
         </div>
         <div className="flex items-center justify-center w-full lg:w-1/2">
           <div className="">
-            <Image
+            {/* <Image
               src={heroImg}
               width="616"
               height="617"
@@ -56,7 +55,7 @@ export const Hero = () => {
               alt="Hero Illustration"
               loading="eager"
               placeholder="blur"
-            />
+            /> */}
           </div>
         </div>
       </Container>

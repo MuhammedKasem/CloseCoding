@@ -1,37 +1,52 @@
-import React from "react";
-import { Container } from "@/components/Container";
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import '../styles/SectionTitle.css';
 
 interface SectionTitleProps {
-  preTitle?: string;
-  title?: string;
-  align?: "left" | "center";
-  children?: React.ReactNode;
+  title: string;
+  subtitle?: string;
+  centered?: boolean;
 }
 
-export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
+const SectionTitle = ({ title, subtitle, centered = true }: SectionTitleProps) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <Container
-      className={`flex w-full flex-col mt-4 ${
-        props.align === "left" ? "" : "items-center justify-center text-center"
-      }`}>
-      {props.preTitle && (
-        <div className="text-sm font-bold tracking-wider text-blue-600 uppercase">
-          {props.preTitle}
-        </div>
+    <div 
+      ref={ref} 
+      className={`section-title ${centered ? 'text-center' : ''}`}
+    >
+      <motion.h2 
+        className="title"
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.6 }}
+      >
+        {title}
+      </motion.h2>
+      
+      {subtitle && (
+        <motion.p 
+          className="subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {subtitle}
+        </motion.p>
       )}
-
-      {props.title && (
-        <h2 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight lg:text-4xl dark:text-white">
-          {props.title}
-        </h2>
-      )}
-
-      {props.children && (
-        <p className="max-w-2xl py-4 text-lg leading-normal text-gray-500 lg:text-xl xl:text-xl dark:text-gray-300">
-          {props.children}
-        </p>
-      )}
-    </Container>
+      
+      <motion.div 
+        className="title-underline"
+        initial={{ width: 0 }}
+        animate={inView ? { width: centered ? '80px' : '60px' } : { width: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      />
+    </div>
   );
-}
+};
 
+export default SectionTitle;

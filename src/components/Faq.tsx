@@ -1,56 +1,110 @@
-"use client";
-import React from "react";
-import { Container } from "@/components/Container";
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/24/solid";
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import SectionTitle from './SectionTitle';
+import '../styles/Faq.css';
 
-export const Faq = () => {
-  return (
-    <Container className="!p-0">
-      <div className="w-full max-w-2xl p-2 mx-auto rounded-2xl">
-        {faqdata.map((item, index) => (
-          <div key={item.question} className="mb-5">
-            <Disclosure>
-              {({ open }) => (
-                <>
-                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-blue-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-gray-200">
-                    <span>{item.question}</span>
-                    <ChevronUpIcon
-                      className={`${
-                        open ? "transform rotate-180" : ""
-                      } w-5 h-5 text-blue-500`}
-                    />
-                  </DisclosureButton>
-                  <DisclosurePanel className="px-4 pt-4 pb-2 text-gray-500 dark:text-gray-300">
-                    {item.answer}
-                  </DisclosurePanel>
-                </>
-              )}
-            </Disclosure>
-          </div>
-        ))}
-      </div>
-    </Container>
-  );
-}
-
-const faqdata = [
+const faqs = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
+    id: 1,
+    question: 'What types of businesses do you work with?',
+    answer: 'We work with businesses of all sizes, from startups to large enterprises, across various industries. Our solutions are tailored to meet the specific needs of each client, regardless of their size or sector.',
   },
   {
-    question: "Can I use it in a commercial project?",
-    answer: "Yes, this you can.",
+    id: 2,
+    question: 'How long does it typically take to complete a project?',
+    answer: 'Project timelines vary depending on the scope and complexity of the work. A simple website might take 2-4 weeks, while a complex custom software solution could take several months. During our initial consultation, we\'ll provide you with a detailed timeline based on your specific requirements.',
   },
   {
-    question: "What is your refund policy? ",
-    answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+    id: 3,
+    question: 'Do you provide ongoing support after the project is completed?',
+    answer: 'Yes, we offer ongoing support and maintenance for all our projects. We can create a custom support plan that meets your needs, whether that\'s regular updates, bug fixes, or feature enhancements.',
   },
   {
-    question: "Do you offer technical support? ",
-    answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+    id: 4,
+    question: 'How do you handle project pricing?',
+    answer: 'We offer transparent pricing based on the scope of work. Depending on the project, we may work on a fixed-price basis or an hourly rate. We\'ll provide a detailed quote after understanding your requirements during the initial consultation.',
+  },
+  {
+    id: 5,
+    question: 'What is your development process like?',
+    answer: 'We follow an agile development methodology, which allows for flexibility and collaboration throughout the project. Our process typically includes discovery, planning, design, development, testing, deployment, and ongoing support. We keep you involved at every stage to ensure the final product meets your expectations.',
+  },
+  {
+    id: 6,
+    question: 'Can you work with our existing systems and technologies?',
+    answer: 'Yes, we have experience integrating with a wide range of existing systems and technologies. We can work with your current infrastructure to develop solutions that complement and enhance your existing setup.',
   },
 ];
+
+const Faq = () => {
+  const [activeId, setActiveId] = useState<number | null>(null);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const toggleFaq = (id: number) => {
+    setActiveId(activeId === id ? null : id);
+  };
+
+  return (
+    <section id="faq" className="faq-section section">
+      <div className="container">
+        <SectionTitle
+          title="Frequently Asked Questions"
+          subtitle="Find answers to common questions about our services and process."
+        />
+
+        <motion.div 
+          className="faq-container"
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+        >
+          {faqs.map((faq, index) => (
+            <motion.div 
+              key={faq.id}
+              className={`faq-item ${activeId === faq.id ? 'active' : ''}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <div 
+                className="faq-question"
+                onClick={() => toggleFaq(faq.id)}
+              >
+                <h3>{faq.question}</h3>
+                <div className={`faq-icon ${activeId === faq.id ? 'active' : ''}`}>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <AnimatePresence>
+                {activeId === faq.id && (
+                  <motion.div 
+                    className="faq-answer"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p>{faq.answer}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <div className="faq-cta">
+          <p>Don't see your question here?</p>
+          <a href="#contact" className="button btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Faq;

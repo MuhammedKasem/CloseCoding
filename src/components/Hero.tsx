@@ -83,7 +83,8 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <div className="code-window">
+          {/* Desktop Code Window */}
+          <div className="code-window desktop-only">
             <div className="code-header">
               <div className="code-dots">
                 <span></span>
@@ -119,14 +120,40 @@ export default CustomSoftware;`}
               </pre>
             </div>
           </div>
+          
+          {/* Mobile Service Icons */}
+          <div className="mobile-service-icons">
+            <div className="service-icon-item">
+              <div className="service-icon">🌐</div>
+              <p>Web Development</p>
+            </div>
+            <div className="service-icon-item">
+              <div className="service-icon">⚙️</div>
+              <p>Automation</p>
+            </div>
+            <div className="service-icon-item">
+              <div className="service-icon">💻</div>
+              <p>Custom Software</p>
+            </div>
+          </div>
         </motion.div>
       </div>
-      <div className="hero-scroll-indicator">
+      {/* Desktop Scroll Indicator */}
+      <div className="hero-scroll-indicator desktop-only">
         <div className="mouse">
           <div className="wheel"></div>
         </div>
         <div className="arrow">
           <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      
+      {/* Mobile Scroll Indicator */}
+      <div className="hero-scroll-indicator-mobile">
+        <p>Swipe Down</p>
+        <div className="chevron-down">
           <span></span>
           <span></span>
         </div>

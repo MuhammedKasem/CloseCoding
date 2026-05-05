@@ -7,6 +7,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Faq from './components/Faq';
 import Contact from './components/Contact';
+import Clients from './components/Clients';
 import Footer from './components/Footer';
 import PopupWidget from './components/PopupWidget';
 
@@ -46,6 +47,7 @@ function App() {
       <main>
         <Hero />
         <Services />
+        <Clients />
         <About />
         <Skills />
         <Faq />

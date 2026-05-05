@@ -51,13 +51,14 @@ const Hero = () => {
       <div className="particles-container" ref={particlesContainerRef}></div>
       <div className="container hero-container">
         <div className="hero-content">
-          <motion.h1 
+          <motion.h1
             className="hero-title"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Custom Software Solutions for Your Business
+            Custom Software Solutions{' '}
+            <span className="hero-title-accent">for Your Business</span>
           </motion.h1>
           <motion.p 
             className="hero-subtitle"
@@ -121,19 +122,19 @@ export default CustomSoftware;`}
             </div>
           </div>
           
-          {/* Mobile Service Icons */}
-          <div className="mobile-service-icons">
-            <div className="service-icon-item">
-              <div className="service-icon">🌐</div>
-              <p>Web Development</p>
+          {/* Mobile Stats Grid */}
+          <div className="mobile-stats-grid">
+            <div className="mobile-stat-card">
+              <span className="mobile-stat-number">2+</span>
+              <span className="mobile-stat-label">Businesses Served</span>
             </div>
-            <div className="service-icon-item">
-              <div className="service-icon">⚙️</div>
-              <p>Automation</p>
+            <div className="mobile-stat-card">
+              <span className="mobile-stat-number">100%</span>
+              <span className="mobile-stat-label">Custom Built</span>
             </div>
-            <div className="service-icon-item">
-              <div className="service-icon">💻</div>
-              <p>Custom Software</p>
+            <div className="mobile-stat-card mobile-stat-card--wide">
+              <span className="mobile-stat-dot"></span>
+              <span className="mobile-stat-label">Available for New Projects</span>
             </div>
           </div>
         </motion.div>

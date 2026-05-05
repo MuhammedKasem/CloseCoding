@@ -1,5 +1,5 @@
 .footer {
-  background-color: #1a1a2e;
+  background: linear-gradient(135deg, #0A0F1E 0%, #0D1B3E 100%);
   color: white;
   padding: 5rem 0 2rem;
   position: relative;
@@ -51,7 +51,8 @@
   left: 0;
   width: 30px;
   height: 2px;
-  background-color: var(--primary);
+  background: var(--primary-gradient);
+  border-radius: 2px;
 }
 
 .footer-links-column ul {
@@ -65,7 +66,7 @@
 }
 
 .footer-links-column a {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
   transition: color var(--transition-fast);
   position: relative;

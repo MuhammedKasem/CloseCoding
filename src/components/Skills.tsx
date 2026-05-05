@@ -78,51 +78,6 @@ const Skills = () => {
           ))}
         </div>
 
-        <motion.div
-          className="skills-animation"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <div className="code-animation">
-            <div className="code-line">
-              <span className="code-keyword">const</span> <span className="code-function">createSolution</span> = <span className="code-keyword">async</span> (<span className="code-param">clientNeeds</span>) =&gt; {'{'}
-            </div>
-            <div className="code-line indent-1">
-              <span className="code-keyword">const</span> <span className="code-variable">technologies</span> = <span className="code-function">selectBestTech</span>(<span className="code-param">clientNeeds</span>);
-            </div>
-            <div className="code-line indent-1">
-              <span className="code-keyword">const</span> <span className="code-variable">team</span> = <span className="code-function">assembleExpertTeam</span>(<span className="code-param">technologies</span>);
-            </div>
-            <div className="code-line indent-1">
-              <span className="code-keyword">const</span> <span className="code-variable">solution</span> = <span className="code-keyword">await</span> <span className="code-function">buildCustomSolution</span>({'{'}
-            </div>
-            <div className="code-line indent-2">
-              <span className="code-property">client</span>: <span className="code-param">clientNeeds.name</span>,
-            </div>
-            <div className="code-line indent-2">
-              <span className="code-property">requirements</span>: <span className="code-param">clientNeeds.requirements</span>,
-            </div>
-            <div className="code-line indent-2">
-              <span className="code-property">technologies</span>,
-            </div>
-            <div className="code-line indent-2">
-              <span className="code-property">team</span>,
-            </div>
-            <div className="code-line indent-2">
-              <span className="code-property">timeline</span>: <span className="code-param">clientNeeds.timeline</span>,
-            </div>
-            <div className="code-line indent-1">
-              {'}'});
-            </div>
-            <div className="code-line indent-1">
-              <span className="code-keyword">return</span> <span className="code-variable">solution</span>;
-            </div>
-            <div className="code-line">
-              {'}'};
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

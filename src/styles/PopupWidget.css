@@ -9,59 +9,64 @@
 }
 
 .popup-widget-button {
-  width: 70px;
-  height: 70px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
-  background-color: var(--primary);
+  background: var(--primary-gradient);
   color: white;
   border: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all var(--transition-fast);
   z-index: 1001;
-  animation: pulse 2s infinite;
+  animation: chatPulse 2.5s infinite;
+  flex-shrink: 0;
+}
+
+/* Force icon size via CSS regardless of SVG attrs */
+.popup-widget-button svg {
+  width: 32px !important;
+  height: 32px !important;
+  flex-shrink: 0;
 }
 
 .popup-widget-button:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.55);
   animation: none;
+  transform: scale(1.08);
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(24, 119, 242, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(24, 119, 242, 0);
-  }
+@keyframes chatPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+  70%  { box-shadow: 0 0 0 14px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
 }
 
 .popup-widget-button.active {
-  background-color: #e74c3c;
+  background: linear-gradient(135deg, #DC2626, #9333EA);
+  animation: none;
 }
 
 .popup-widget-content {
   position: absolute;
-  bottom: 90px; /* Adjusted to account for larger button */
+  bottom: 82px;
   right: 0;
-  width: 350px;
-  background-color: white;
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  width: 340px;
+  background: #0D1526;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
   overflow: hidden;
   z-index: 1000;
 }
 
 .popup-widget-header {
-  background-color: var(--primary);
+  background: var(--primary-gradient);
   color: white;
-  padding: 1.25rem;
+  padding: 1.25rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,23 +74,26 @@
 
 .popup-widget-header h3 {
   margin: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .popup-widget-close {
-  background: none;
+  background: rgba(255,255,255,0.18);
   border: none;
   color: white;
   cursor: pointer;
-  padding: 0;
+  padding: 0.25rem;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .popup-widget-close:hover {
+  background: rgba(255,255,255,0.28);
   transform: rotate(90deg);
 }
 
@@ -95,58 +103,70 @@
 
 .popup-widget-body p {
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .popup-form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
 }
 
 .popup-form-group label {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .popup-form-group input,
 .popup-form-group textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  transition: border-color var(--transition-fast);
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
   font-family: inherit;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.popup-form-group input::placeholder,
+.popup-form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .popup-form-group input:focus,
 .popup-form-group textarea:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.1);
+  border-color: var(--primary-light);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .popup-submit-button {
   width: 100%;
-  padding: 0.75rem 1rem;
-  background-color: var(--primary);
+  padding: 0.8rem 1rem;
+  background: var(--primary-gradient);
   color: white;
   border: none;
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.97rem;
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+  margin-top: 0.5rem;
 }
 
 .popup-submit-button:hover {
-  background-color: #0e62c7;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.38);
 }
 
 .popup-submit-button:active {
@@ -158,15 +178,20 @@
     bottom: 1.5rem;
     right: 1.5rem;
   }
-  
+
+  .popup-widget-button {
+    width: 62px;
+    height: 62px;
+  }
+
+  .popup-widget-button svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
   .popup-widget-content {
     width: 300px;
-    bottom: 80px; /* Adjusted for mobile button size */
-  }
-  
-  .popup-widget-button {
-    width: 60px;
-    height: 60px;
+    bottom: 76px;
   }
 }
 

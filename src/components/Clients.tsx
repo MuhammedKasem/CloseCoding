@@ -36,7 +36,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { y: 40, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 };
 
 const Clients = () => {
